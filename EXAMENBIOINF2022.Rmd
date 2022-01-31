@@ -1,0 +1,179 @@
+---
+title: "examenbioinformatica_2022"
+author: "Borja Gracia Loroño"
+date: "31/1/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## EJERCICIO 1: COMANDOS DE LINUX : 
+a. Palabras en el fichero:
+cat genes.txt | wc -w
+
+b. Cambio de tabulados por guiones
+
+cat genes.txt | sed 's/\t/-/g'
+
+c. Como cambiarias solo la primera aparición
+
+cat genes.txt | sed 's/\t/-'
+
+d. Buscar todos los genes menos el DSTYK
+
+cat genes.txt | -v grep DSTYK
+
+## EJERCICIO 2: PREGUNTAS BÁSICAS
+
+```{r}
+library(nycflights13)
+library(tidyverse)
+library(lubridate)
+
+```
+a. Cuantas columnas y cuantos registros tiene el dataset
+
+```{r}
+tiempo <- nycflights13::weather
+
+dim(tiempo)
+
+print("Aparecen en el dataset 26.115 registros y 15 columnas")
+
+```
+b. ¿Cuantos origin aparecen y para cada uno de ellos cuantos registros hay?
+
+```{r}
+table(tiempo$origin)
+
+print("Observamos que aparecen 3 origin diferentes y cada uno de ellos con los registros indicados en la pantalla")
+```
+c. En LGA, ¿cuales fueron la mediana del wind_speed y la media de pressure?
+
+```{r}
+data_LGA <- tiempo[tiempo$origin == "LGA",]
+
+median(data_LGA$wind_speed)
+mean(data_LGA$pressure, na.rm = T,)
+
+print("Aquí observamos la mediana del wind_speed y la media de pressure")
+
+```
+
+d.Después de eliminar los NA de la columna wind_gust, calcula para cada mes la media de wind_speed y wind_gust, y el número de casos.
+
+```{r}
+tiempo_sin_na <- tiempo[complete.cases(tiempo$wind_gust),]
+
+dif_meses <- tiempo_sin_na %>%
+  group_by(month) %>%
+  summarise(media_wind_speed = mean(wind_speed),
+            media_wind_gust = mean(wind_gust),
+            n_casos = n()
+  )
+  dif_meses
+  
+```
+
+
+## EJERCICIO 3: PLOTS
+ a. Crea el siguiente plot:
+```{r}
+data_EWR <- tiempo[tiempo$origin == "EWR",]
+data_JFK <- tiempo[tiempo$origin == "JFK",]
+
+EWR_mes_1 <- weather[weather$origin == "EWR" & weather$month == 1,]
+EWR2_mes_2 <- weather[weather$origin == "EWR" & weather$month == 2,]
+EWR3_mes_3 <- weather[weather$origin == "EWR" & weather$month == 2,]
+EWR4_mes_4 <- weather[weather$origin == "EWR" & weather$month == 4,]
+EWR5_mes_5 <- weather[weather$origin == "EWR" & weather$month == 5,]
+EWR6_mes_6 <- weather[weather$origin == "EWR" & weather$month == 6,]
+EWR7_mes_7 <- weather[weather$origin == "EWR" & weather$month == 7,]
+EWR8_mes_8 <- weather[weather$origin == "EWR" & weather$month == 8,]
+EWR9_mes_9 <- weather[weather$origin == "EWR" & weather$month == 9,]
+EWR10_mes_10 <- weather[weather$origin == "EWR" & weather$month == 10,]
+EWR11_mes_11 <- weather[weather$origin == "EWR" & weather$month == 11,]
+EWR12_mes_12 <- weather[weather$origin == "EWR" & weather$month == 12,]
+
+JFK1_mes_1 <- weather[weather$origin == "JFK" & weather$month == 1,]
+JFK2_mes_2 <- weather[weather$origin == "JFK" & weather$month == 2,]
+JFK3_mes_3 <- weather[weather$origin == "JFK" & weather$month == 3,]
+JFK4_mes_4 <- weather[weather$origin == "JFK" & weather$month == 4,]
+JFK5_mes_5 <- weather[weather$origin == "JFK" & weather$month == 5,]
+JFK6_mes_6 <- weather[weather$origin == "JFK" & weather$month == 6,]
+JFK7_mes_7 <- weather[weather$origin == "JFK" & weather$month == 7,]
+JFK8_mes_8 <- weather[weather$origin == "JFK" & weather$month == 8,]
+JFK9_mes_9 <- weather[weather$origin == "JFK" & weather$month == 9,]
+JFK10_mes_10 <- weather[weather$origin == "JFK" & weather$month == 10,]
+JFK11_mes_11 <- weather[weather$origin == "JFK" & weather$month == 11,]
+JFK12_mes_12 <- weather[weather$origin == "JFK" & weather$month == 12,]
+
+LGA1_mes_1 <- weather[weather$origin == "LGA" & weather$month == 1,]
+LGA2_mes_2 <- weather[weather$origin == "LGA" & weather$month == 2,]
+LGA3_mes_3 <- weather[weather$origin == "LGA" & weather$month == 3,]
+LGA4_mes_4 <- weather[weather$origin == "LGA" & weather$month == 4,]
+LGA5_mes_5 <- weather[weather$origin == "LGA" & weather$month == 5,]
+LGA6_mes_6 <- weather[weather$origin == "LGA" & weather$month == 6,]
+LGA7_mes_7 <- weather[weather$origin == "LGA" & weather$month == 7,]
+LGA8_mes_8 <- weather[weather$origin == "LGA" & weather$month == 8,]
+LGA9_mes_9 <- weather[weather$origin == "LGA" & weather$month == 9,]
+LGA10_mes_10 <- weather[weather$origin == "LGA" & weather$month == 10,]
+LGA11_mes_11 <- weather[weather$origin == "LGA" & weather$month == 11,]
+LGA12_mes_12 <- weather[weather$origin == "LGA" & weather$month == 12,]
+
+par(mfrow = c(1,3))
+boxplot(EWR_mes_1$temp, EWR2_mes_2$temp, EWR3_mes_3$temp, EWR4_mes_4$temp, EWR5_mes_5$temp, EWR6_mes_6$temp, EWR7_mes_7$temp, EWR8_mes_8$temp, EWR9_mes_9$temp, EWR10_mes_10$temp, EWR11_mes_11$temp, EWR12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "EWR", col = "red")
+
+boxplot(JFK1_mes_1$temp, JFK2_mes_2$temp, JFK3_mes_3$temp, JFK4_mes_4$temp, JFK5_mes_5$temp, JFK6_mes_6$temp, JFK7_mes_7$temp, JFK8_mes_8$temp, JFK9_mes_9$temp, JFK10_mes_10$temp, JFK11_mes_11$temp, JFK12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "JFK", col = "green")
+
+boxplot(LGA1_mes_1$temp, LGA2_mes_2$temp, LGA3_mes_3$temp, LGA4_mes_4$temp, LGA5_mes_5$temp, LGA6_mes_6$temp, LGA7_mes_7$temp,LGA8_mes_8$temp, LGA9_mes_9$temp, LGA10_mes_10$temp, LGA11_mes_11$temp, LGA12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "LGA", col = "blue")
+
+```
+
+
+b.Crea la función:
+
+
+```{r}
+plot_function <- function(temp, titulo, unidades)
+{
+boxplot(EWR_mes_1$temp, EWR2_mes_2$temp, EWR3_mes_3$temp, EWR4_mes_4$temp, EWR5_mes_5$temp, EWR6_mes_6$temp, EWR7_mes_7$temp, EWR8_mes_8$temp, EWR9_mes_9$temp, EWR10_mes_10$temp, EWR11_mes_11$temp, EWR12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "EWR", col = "red")
+
+boxplot(JFK1_mes_1$temp, JFK2_mes_2$temp, JFK3_mes_3$temp, JFK4_mes_4$temp, JFK5_mes_5$temp, JFK6_mes_6$temp, JFK7_mes_7$temp, JFK8_mes_8$temp, JFK9_mes_9$temp, JFK10_mes_10$temp, JFK11_mes_11$temp, JFK12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "JFK", col = "green")
+
+boxplot(LGA1_mes_1$temp, LGA2_mes_2$temp, LGA3_mes_3$temp, LGA4_mes_4$temp, LGA5_mes_5$temp, LGA6_mes_6$temp, LGA7_mes_7$temp,LGA8_mes_8$temp, LGA9_mes_9$temp, LGA10_mes_10$temp, LGA11_mes_11$temp, LGA12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "LGA", col = "blue")
+
+}
+{
+  print(mean(data_EWR$temp, na.rm = T))
+  print(mean(data_JFK$temp, na.rm = T))
+  print(mean(data_LGA$temp, na.rm = T))
+}
+
+```
+## EJERCICIO 4:
+```{r}
+
+
+
+```
+
+## EJERCICIO 5:
+
+a. ¿Cuál es el punto con FC (Fold change) más grande en valores absolutos?
+
+El fold change esta en la x y nos dice cuantas veces mas o menos esta expresado un gen. En este caso, nos deberemos de fijar en que gen tiene los valores mas altos en valores absolutos. En este caso, será el punto morado de más a la izquierda, con un pvalor cercano a 5 sin nombre
+
+b. ¿Que gen sobreexpresado es más significativo?
+
+El pvalor nos dice que significancia tiene un gen, por lo cual, a más hacia arriba mas significancia, además, cuanto mas hacia la derecha mayor importancia en cuanto a la sobreexpresión. Es por ello por lo que he decucido que el gen sobreexpresado mas significativo es Rbp1.
+
+
+
+
+
+
+
+
