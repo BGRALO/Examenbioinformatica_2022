@@ -132,13 +132,50 @@ boxplot(mes1$temp, mes2$temp, mes3$temp, mes4$temp, mes5$temp, mes6$temp, mes7$t
 
 ```
 ## EJERCICIO 4:
+
+a. ¿Que correlación tuvieron la temperatura y la humedad en cada uno de los origin? Plotealo mediante
+puntos con ggplot
 ```{r}
+EWR <- tiempo[tiempo$origin == "EWR" & tiempo$month == 6 & tiempo$day == 27, ]
+JFK <- weather[tiempo$origin == "JFK" & tiempo$month == 6 & tiempo$day == 27, ]
+LGA <- weather[tiempo$origin == "LGA" & tiempo$month == 6 & tiempo$day == 27, ]
 
+cor(EWR$temp, EWR$humid)
+cor(JFK$temp, EWR$humid)
+cor(LGA$temp, EWR$humid)
 
+print("La correlación entre los 3 es negativa, por ello, podemos decir que no existe una relación directa ni proporcional entre ellas")
 
 ```
+```{r}
+library(ggplot2)
+
+cumpleaños <- tiempo[tiempo$month == 6 & weather$day == 27, ]
+
+ggplot(data = cumpleaños) + 
+geom_point(mapping = aes(x = temp, y = humid, col = origin))
+```
+
+b. Si comparas la temperatura en los origins JFK y LGA ¿son estadísticamente
+diferentes? ¿Qué p-valor consigues? Plotea los boxplots
+```{r}
+t.test(data_JFK$temp, data_LGA$temp)
+
+print("El valor de p es muy inferior a 0,05, en nuestro caso es de 1.31*10-6. Por lotanto, tenemos evidencias de que existe una relación estadísticamente significativa entre la temperatura en los dos origin")
+
+```
+```{r}
+boxplot(data_JFK$temp ~ data_LGA$temp, col = c(2,3), legend.text = TRUE, xlab = "Temperatura_LGA", ylab = "TemperaturA_JFK", main = "Boxplot_Examen")
+
+par(mfrow = c(1,2))
+boxplot(data_JFK$temp, col = "green", legend.text = TRUE, main = "Boxplot_JFK", xlab = "Origen_JFK", ylab = "Temperature")
+boxplot(data_LGA$temp, col = "blue", legend.text = TRUE, main = "Boxplot_LGA", xlab = "Origen_LGA", ylab = "Temperature")
+```
+
+
 
 ## EJERCICIO 5:
+
 
 a. ¿Cuál es el punto con FC (Fold change) más grande en valores absolutos?
 
@@ -147,6 +184,12 @@ El fold change esta en la x y nos dice cuantas veces mas o menos esta expresado 
 b. ¿Que gen sobreexpresado es más significativo?
 
 El pvalor nos dice que significancia tiene un gen, por lo cual, a más hacia arriba mas significancia, además, cuanto mas hacia la derecha mayor importancia en cuanto a la sobreexpresión. Es por ello por lo que he decucido que el gen sobreexpresado mas significativo es Rbp1.
+
+## EJERCICIO 6:
+   Sube el exámen a github y escribe el url aquí
+   
+## Ejercicio 7: 
+   Acaba el documento con sessionInfo()
 
 
 
