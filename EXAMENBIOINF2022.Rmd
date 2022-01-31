@@ -188,9 +188,15 @@ El pvalor nos dice que significancia tiene un gen, por lo cual, a más hacia arr
 ## EJERCICIO 6:
    Sube el exámen a github y escribe el url aquí:
    
+  
    
 ## Ejercicio 7: 
    Acaba el documento con sessionInfo()
+   
+```{r}
+sessionInfo()
+```
+
 
 
 
