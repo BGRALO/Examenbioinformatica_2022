@@ -82,54 +82,31 @@ dif_meses <- tiempo_sin_na %>%
 ## EJERCICIO 3: PLOTS
  a. Crea el siguiente plot:
 ```{r}
+
 data_EWR <- tiempo[tiempo$origin == "EWR",]
 data_JFK <- tiempo[tiempo$origin == "JFK",]
 
-EWR_mes_1 <- weather[weather$origin == "EWR" & weather$month == 1,]
-EWR2_mes_2 <- weather[weather$origin == "EWR" & weather$month == 2,]
-EWR3_mes_3 <- weather[weather$origin == "EWR" & weather$month == 2,]
-EWR4_mes_4 <- weather[weather$origin == "EWR" & weather$month == 4,]
-EWR5_mes_5 <- weather[weather$origin == "EWR" & weather$month == 5,]
-EWR6_mes_6 <- weather[weather$origin == "EWR" & weather$month == 6,]
-EWR7_mes_7 <- weather[weather$origin == "EWR" & weather$month == 7,]
-EWR8_mes_8 <- weather[weather$origin == "EWR" & weather$month == 8,]
-EWR9_mes_9 <- weather[weather$origin == "EWR" & weather$month == 9,]
-EWR10_mes_10 <- weather[weather$origin == "EWR" & weather$month == 10,]
-EWR11_mes_11 <- weather[weather$origin == "EWR" & weather$month == 11,]
-EWR12_mes_12 <- weather[weather$origin == "EWR" & weather$month == 12,]
-
-JFK1_mes_1 <- weather[weather$origin == "JFK" & weather$month == 1,]
-JFK2_mes_2 <- weather[weather$origin == "JFK" & weather$month == 2,]
-JFK3_mes_3 <- weather[weather$origin == "JFK" & weather$month == 3,]
-JFK4_mes_4 <- weather[weather$origin == "JFK" & weather$month == 4,]
-JFK5_mes_5 <- weather[weather$origin == "JFK" & weather$month == 5,]
-JFK6_mes_6 <- weather[weather$origin == "JFK" & weather$month == 6,]
-JFK7_mes_7 <- weather[weather$origin == "JFK" & weather$month == 7,]
-JFK8_mes_8 <- weather[weather$origin == "JFK" & weather$month == 8,]
-JFK9_mes_9 <- weather[weather$origin == "JFK" & weather$month == 9,]
-JFK10_mes_10 <- weather[weather$origin == "JFK" & weather$month == 10,]
-JFK11_mes_11 <- weather[weather$origin == "JFK" & weather$month == 11,]
-JFK12_mes_12 <- weather[weather$origin == "JFK" & weather$month == 12,]
-
-LGA1_mes_1 <- weather[weather$origin == "LGA" & weather$month == 1,]
-LGA2_mes_2 <- weather[weather$origin == "LGA" & weather$month == 2,]
-LGA3_mes_3 <- weather[weather$origin == "LGA" & weather$month == 3,]
-LGA4_mes_4 <- weather[weather$origin == "LGA" & weather$month == 4,]
-LGA5_mes_5 <- weather[weather$origin == "LGA" & weather$month == 5,]
-LGA6_mes_6 <- weather[weather$origin == "LGA" & weather$month == 6,]
-LGA7_mes_7 <- weather[weather$origin == "LGA" & weather$month == 7,]
-LGA8_mes_8 <- weather[weather$origin == "LGA" & weather$month == 8,]
-LGA9_mes_9 <- weather[weather$origin == "LGA" & weather$month == 9,]
-LGA10_mes_10 <- weather[weather$origin == "LGA" & weather$month == 10,]
-LGA11_mes_11 <- weather[weather$origin == "LGA" & weather$month == 11,]
-LGA12_mes_12 <- weather[weather$origin == "LGA" & weather$month == 12,]
-
 par(mfrow = c(1,3))
-boxplot(EWR_mes_1$temp, EWR2_mes_2$temp, EWR3_mes_3$temp, EWR4_mes_4$temp, EWR5_mes_5$temp, EWR6_mes_6$temp, EWR7_mes_7$temp, EWR8_mes_8$temp, EWR9_mes_9$temp, EWR10_mes_10$temp, EWR11_mes_11$temp, EWR12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "EWR", col = "red")
+mes1 <- weather[weather$month == 1, ]
+mes2 <- weather[weather$month == 2, ]
+mes3 <- weather[weather$month == 3, ]
+mes4 <- weather[weather$month == 4, ]
+mes5 <- weather[weather$month == 5, ]
+mes6 <- weather[weather$month == 6, ]
+mes7 <- weather[weather$month == 7, ]
+mes8 <- weather[weather$month == 8, ]
+mes9 <- weather[weather$month == 9, ]
+mes10 <- weather[weather$month == 10, ]
+mes11 <- weather[weather$month == 11, ]
+mes12 <- weather[weather$month == 12, ]
 
-boxplot(JFK1_mes_1$temp, JFK2_mes_2$temp, JFK3_mes_3$temp, JFK4_mes_4$temp, JFK5_mes_5$temp, JFK6_mes_6$temp, JFK7_mes_7$temp, JFK8_mes_8$temp, JFK9_mes_9$temp, JFK10_mes_10$temp, JFK11_mes_11$temp, JFK12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "JFK", col = "green")
+boxplot(mes1$temp, mes2$temp, mes3$temp, mes4$temp, mes5$temp, mes6$temp, mes7$temp, mes8$temp, mes9$temp, mes10$temp, mes11$temp, mes12$temp, xlab = "Months", ylab = "ºC", main = "EWR", col = "red")
 
-boxplot(LGA1_mes_1$temp, LGA2_mes_2$temp, LGA3_mes_3$temp, LGA4_mes_4$temp, LGA5_mes_5$temp, LGA6_mes_6$temp, LGA7_mes_7$temp,LGA8_mes_8$temp, LGA9_mes_9$temp, LGA10_mes_10$temp, LGA11_mes_11$temp, LGA12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "LGA", col = "blue")
+boxplot(mes1$temp, mes2$temp, mes3$temp, mes4$temp, mes5$temp, mes6$temp, mes7$temp, mes8$temp, mes9$temp, mes10$temp, mes11$temp, mes12$temp, xlab = "Months", ylab = "ºC", main = "JFK", col = "green")
+
+boxplot(mes1$temp, mes2$temp, mes3$temp, mes4$temp, mes5$temp, mes6$temp, mes7$temp, mes8$temp, mes9$temp, mes10$temp, mes11$temp, mes12$temp, xlab = "Months", ylab = "ºC", main = "LGA", col = "blue")
+
+
 
 ```
 
@@ -140,11 +117,11 @@ b.Crea la función:
 ```{r}
 plot_function <- function(temp, titulo, unidades)
 {
-boxplot(EWR_mes_1$temp, EWR2_mes_2$temp, EWR3_mes_3$temp, EWR4_mes_4$temp, EWR5_mes_5$temp, EWR6_mes_6$temp, EWR7_mes_7$temp, EWR8_mes_8$temp, EWR9_mes_9$temp, EWR10_mes_10$temp, EWR11_mes_11$temp, EWR12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "EWR", col = "red")
+boxplot(mes1$temp, mes2$temp, mes3$temp, mes4$temp, mes5$temp, mes6$temp, mes7$temp, mes8$temp, mes9$temp, mes10$temp, mes11$temp, mes12$temp, xlab = "Months", ylab = "ºC", main = "EWR", col = "red")
 
-boxplot(JFK1_mes_1$temp, JFK2_mes_2$temp, JFK3_mes_3$temp, JFK4_mes_4$temp, JFK5_mes_5$temp, JFK6_mes_6$temp, JFK7_mes_7$temp, JFK8_mes_8$temp, JFK9_mes_9$temp, JFK10_mes_10$temp, JFK11_mes_11$temp, JFK12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "JFK", col = "green")
+boxplot(mes1$temp, mes2$temp, mes3$temp, mes4$temp, mes5$temp, mes6$temp, mes7$temp, mes8$temp, mes9$temp, mes10$temp, mes11$temp, mes12$temp, xlab = "Months", ylab = "ºC", main = "JFK", col = "green")
 
-boxplot(LGA1_mes_1$temp, LGA2_mes_2$temp, LGA3_mes_3$temp, LGA4_mes_4$temp, LGA5_mes_5$temp, LGA6_mes_6$temp, LGA7_mes_7$temp,LGA8_mes_8$temp, LGA9_mes_9$temp, LGA10_mes_10$temp, LGA11_mes_11$temp, LGA12_mes_12$temp, xlab = "Months", ylab = "ºC", main = "LGA", col = "blue")
+boxplot(mes1$temp, mes2$temp, mes3$temp, mes4$temp, mes5$temp, mes6$temp, mes7$temp, mes8$temp, mes9$temp, mes10$temp, mes11$temp, mes12$temp, xlab = "Months", ylab = "ºC", main = "LGA", col = "blue")
 
 }
 {
