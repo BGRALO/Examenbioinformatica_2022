@@ -186,7 +186,8 @@ b. ¿Que gen sobreexpresado es más significativo?
 El pvalor nos dice que significancia tiene un gen, por lo cual, a más hacia arriba mas significancia, además, cuanto mas hacia la derecha mayor importancia en cuanto a la sobreexpresión. Es por ello por lo que he decucido que el gen sobreexpresado mas significativo es Rbp1.
 
 ## EJERCICIO 6:
-   Sube el exámen a github y escribe el url aquí
+   Sube el exámen a github y escribe el url aquí:
+   
    
 ## Ejercicio 7: 
    Acaba el documento con sessionInfo()
