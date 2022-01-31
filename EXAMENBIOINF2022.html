@@ -174,18 +174,15 @@ pre code {
 <div id="ejercicio-1-comandos-de-linux" class="section level2">
 <h2>EJERCICIO 1: COMANDOS DE LINUX :</h2>
 <ol style="list-style-type: lower-alpha">
-<li><p>Palabras en el fichero: cat genes.txt | wc -w</p></li>
-<li><p>Cambio de tabulados por guiones</p></li>
+<li><p>Palabras en el fichero:</p>
+<p>cat genes.txt | wc -w</p></li>
+<li><p>Cambio de tabulados por guiones</p>
+<p>cat genes.txt | sed ‘s/-/g’</p></li>
+<li><p>Como cambiarias solo la primera aparición</p>
+<p>cat genes.txt | sed ‘s/-’</p></li>
+<li><p>Buscar todos los genes menos el DSTYK</p>
+<p>cat genes.txt | -v grep DSTYK</p></li>
 </ol>
-<p>cat genes.txt | sed ‘s/-/g’</p>
-<ol start="3" style="list-style-type: lower-alpha">
-<li>Como cambiarias solo la primera aparición</li>
-</ol>
-<p>cat genes.txt | sed ‘s/-’</p>
-<ol start="4" style="list-style-type: lower-alpha">
-<li>Buscar todos los genes menos el DSTYK</li>
-</ol>
-<p>cat genes.txt | -v grep DSTYK</p>
 </div>
 <div id="ejercicio-2-preguntas-básicas" class="section level2">
 <h2>EJERCICIO 2: PREGUNTAS BÁSICAS</h2>

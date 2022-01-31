@@ -11,19 +11,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## EJERCICIO 1: COMANDOS DE LINUX : 
 a. Palabras en el fichero:
-cat genes.txt | wc -w
+
+   cat genes.txt | wc -w
 
 b. Cambio de tabulados por guiones
 
-cat genes.txt | sed 's/\t/-/g'
+   cat genes.txt | sed 's/\t/-/g'
 
 c. Como cambiarias solo la primera aparición
 
-cat genes.txt | sed 's/\t/-'
+   cat genes.txt | sed 's/\t/-'
 
 d. Buscar todos los genes menos el DSTYK
 
-cat genes.txt | -v grep DSTYK
+   cat genes.txt | -v grep DSTYK
 
 ## EJERCICIO 2: PREGUNTAS BÁSICAS
 
